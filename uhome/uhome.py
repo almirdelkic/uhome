@@ -34,7 +34,6 @@ class Uhome(object):
     """
     Class Uhome used to represent a U@home R-167 unit.
 
-    ...
     Attributes
     ----------
     uhome_module_keys : dict
@@ -43,25 +42,11 @@ class Uhome(object):
         A list of discovered controllers. List items are UhomeController objects.
     uhome_thermostats : list of UhomeThermostat
         A list of discovered thermostats. List items are UhomeThermostat objects.
-
-    Methods
-    ----------
-    update()
-        Updates all of the keys for module, controllers and thermostats.
-    init_controllers()
-        Discover registered controllers.
-    init_thermostats()
-        Discover registered thermostats connected to the controllers.
+    ip : str
+        The ip address of U@home unit.
     """
 
     def __init__(self, ip):
-        """
-        Parameters
-        ----------
-        ip : str
-            The ip address of U@home unit.
-        """
-
         self.IP = ip
         self.uhome_module_keys = UHOME_MODULE_KEYS
         self.uhome_controllers = []
@@ -174,7 +159,6 @@ class UhomeController(object):
     Class UhomeController used to represent a controller registered in U@home R-167 unit.
     This is typically a Uponor X-165 unit.
 
-    ...
     Attributes
     ----------
     uhome_controller_keys : dict
@@ -184,13 +168,6 @@ class UhomeController(object):
     """
 
     def __init__(self, index):
-        """
-        Parameters
-        ----------
-        index : int
-            Index of the controller (0-3)
-        """
-
         self.uhome_controller_keys = {}
         self.index = index
         for key_name, key_data in UHOME_CONTROLLER_KEYS.iteritems():
@@ -242,7 +219,6 @@ class UhomeThermostat(object):
     Class UhomeThermostat used to represent a thermostat registered to a controller.
     This is typically a Uponor T-169 unit.
 
-    ...
     Attributes
     ----------
     uhome_thermostat_keys : dict
@@ -254,15 +230,6 @@ class UhomeThermostat(object):
     """
 
     def __init__(self, uc_index, index):
-        """
-        Parameters
-        ----------
-        uc_index : int
-            Index of the controller the thermostat is registered to.
-        index : int
-            Index of the thermostat (0-11)
-        """
-
         self.uhome_thermostat_keys = {}
         self.uc_index = uc_index
         self.index = index

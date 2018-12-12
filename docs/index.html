@@ -1,0 +1,126 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Uhome documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html#document-index">Uhome  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-uhome">
+<span id="uhome"></span><h1>Uhome<a class="headerlink" href="#module-uhome" title="Permalink to this headline">¶</a></h1>
+<p>Uhome is python wrapper for communication with Uponor Smatrix Wave PLUS Smart Home Gateway R-167 aka <a class="reference external" href="mailto:U&#37;&#52;&#48;home">U<span>&#64;</span>home</a>.
+The module uses units REST API for discovery of controllers and thermostats.</p>
+<dl class="class">
+<dt id="uhome.Uhome">
+<em class="property">class </em><code class="descclassname">uhome.</code><code class="descname">Uhome</code><span class="sig-paren">(</span><em>ip</em><span class="sig-paren">)</span><a class="headerlink" href="#uhome.Uhome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class Uhome used to represent a <a class="reference external" href="mailto:U&#37;&#52;&#48;home">U<span>&#64;</span>home</a> R-167 unit.</p>
+<dl class="docutils">
+<dt>uhome_module_keys <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd>A dictionary with all of the module keys, with address and value.</dd>
+<dt>uhome_controllers <span class="classifier-delimiter">:</span> <span class="classifier">list of UhomeController</span></dt>
+<dd>A list of discovered controllers. List items are UhomeController objects.</dd>
+<dt>uhome_thermostats <span class="classifier-delimiter">:</span> <span class="classifier">list of UhomeThermostat</span></dt>
+<dd>A list of discovered thermostats. List items are UhomeThermostat objects.</dd>
+<dt>ip <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>The ip address of <a class="reference external" href="mailto:U&#37;&#52;&#48;home">U<span>&#64;</span>home</a> unit.</dd>
+</dl>
+<dl class="method">
+<dt id="uhome.Uhome.init_controllers">
+<code class="descname">init_controllers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uhome.Uhome.init_controllers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discover registered controllers.</p>
+<p>Method loops through 4 possible controllers and
+assumes that value of key “controller_sv_version” is not “0.00”.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="uhome.Uhome.init_thermostats">
+<code class="descname">init_thermostats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uhome.Uhome.init_thermostats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discover registered thermostats connected to the controllers.</p>
+<p>Method loops through 12 possible thermostats per controller and
+assumes that value of key “room_setpoint” is in range between 0 and 50.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="uhome.Uhome.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uhome.Uhome.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all of the keys for module, controllers and thermostats.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uhome.UhomeController">
+<em class="property">class </em><code class="descclassname">uhome.</code><code class="descname">UhomeController</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#uhome.UhomeController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class UhomeController used to represent a controller registered in <a class="reference external" href="mailto:U&#37;&#52;&#48;home">U<span>&#64;</span>home</a> R-167 unit.
+This is typically a Uponor X-165 unit.</p>
+<dl class="docutils">
+<dt>uhome_controller_keys <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd>A dictionary with all of the controller keys, with address and value.</dd>
+<dt>index <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>An index of the controller (0-3)</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="uhome.UhomeThermostat">
+<em class="property">class </em><code class="descclassname">uhome.</code><code class="descname">UhomeThermostat</code><span class="sig-paren">(</span><em>uc_index</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#uhome.UhomeThermostat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class UhomeThermostat used to represent a thermostat registered to a controller.
+This is typically a Uponor T-169 unit.</p>
+<dl class="docutils">
+<dt>uhome_thermostat_keys <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd>A dictionary with all of the thermostat keys, with address and value.</dd>
+<dt>uc_index <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Index of the controller the thermostat is registered to.</dd>
+<dt>index <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Index of the thermostat (0-11)</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html#document-index">Uhome  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>
