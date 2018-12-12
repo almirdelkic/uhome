@@ -123,4 +123,4 @@ If you test it with other units, please let me know or even better update the li
 Documentation
 =============
 
-TODO: Make documentation.
+https://github.com/almirdelkic/uhome/blob/master/docs/index.txt
