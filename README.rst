@@ -10,7 +10,9 @@ Usage
 
 Package consists of Uhome module and can be used in following way::
 
-    u = Uhome('ip_address_of_u@home_module')
+    import uhome
+
+    u = uhome.Uhome('ip_address_of_u@home_module')
     u.update()
 
 The discovery of controllers and thermostats registered with the unit is run when the object is created. After that method ``update()`` should be called to update the keys with values.
