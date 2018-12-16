@@ -129,7 +129,7 @@ class Uhome(object):
         return response_data
 
     def __update_keys(self, keys):
-        for key_name, key_data in keys.iteritems():
+        for key_name, key_data in keys.items():
             data = '{"jsonrpc": "2.0", "id": 8, "method": "read", "params": {"objects": [{"id": "' + \
                    str(key_data['addr']) + '", "properties": {"85": {}}}]}}'
             response_data = self.__do_rest_call(data)
@@ -175,7 +175,7 @@ class UhomeController(object):
     def __init__(self, index):
         self.uhome_controller_keys = {}
         self.index = index
-        for key_name, key_data in UHOME_CONTROLLER_KEYS.iteritems():
+        for key_name, key_data in UHOME_CONTROLLER_KEYS.items():
             # address in calculated with following: addr + (500 x controller_index)
             self.uhome_controller_keys[key_name] = {'addr': (key_data['addr'] + (500 * index)), 'value': 0}
 
@@ -238,6 +238,6 @@ class UhomeThermostat(object):
         self.uhome_thermostat_keys = {}
         self.uc_index = uc_index
         self.index = index
-        for key_name, key_data in UHOME_THERMOSTAT_KEYS.iteritems():
+        for key_name, key_data in UHOME_THERMOSTAT_KEYS.items():
             # address in calculated with following: addr + (500 x controller_index) + (40 x thermostat_index)
             self.uhome_thermostat_keys[key_name] = {'addr': (key_data['addr'] + (500 * uc_index) + (40 * index)), 'value': 0}
