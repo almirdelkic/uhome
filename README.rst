@@ -8,6 +8,12 @@ Uhome is python wrapper for communication with Uponor Smatrix Wave PLUS Smart Ho
 Usage
 =====
 
+Package can be found on PyPI: https://pypi.org/project/uhome/
+
+It can be installed using::
+
+    pip install uhome
+
 Package consists of Uhome module and can be used in following way::
 
     import uhome

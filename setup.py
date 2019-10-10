@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="uhome",
-    version="0.1.4",
+    version="0.1.5",
     author="Almir Delkic",
     description="Wrapper for communication with Uponor Smatrix Wave PLUS Smart Home Gateway R-167 aka U@home.",
     url="https://github.com/almirdelkic/uhome",
