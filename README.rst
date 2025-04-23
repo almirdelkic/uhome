@@ -3,6 +3,7 @@ Uhome
 =====
 
 Oj oj oj, funker dette?
+Ja?
 
 
 Uhome is python wrapper for communication with Uponor Smatrix Wave PLUS Smart Home Gateway, R-167 aka U@home. The module uses units REST API for discovery of controllers and thermostats.
